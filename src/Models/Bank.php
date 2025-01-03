@@ -3,6 +3,7 @@
 namespace Farsh4d\Bank\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
 use MoveMoveIo\DaData\Facades\DaDataBank;
@@ -19,6 +20,11 @@ class Bank extends Model
      */
 
     protected $guarded = [];
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
 
     public static function resolve($search): Bank|null
     {
