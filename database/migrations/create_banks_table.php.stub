@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Farsh4d\Bank\Costants\PaymentStatus;
+
+class CreatePaymentTransactionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('banks', function (Blueprint $table) {
+            $table->string('name')->unique();
+            $table->unsignedBigInteger('inn')->unique();
+            $table->unsignedBigInteger('bik')->unique();
+            $table->string('swift')->unique();
+            $table->unsignedBigInteger('correspondent_account')->unique();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('payment_transactions');
+    }
+}
