@@ -10,6 +10,7 @@ use MoveMoveIo\DaData\Facades\DaDataBank;
 class Bank extends Model
 {
     use SoftDeletes;
+    protected $primaryKey = 'inn';
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +34,7 @@ class Bank extends Model
             return $bank;
         }
 
-        $dadata = (new DaDataBank)->id($search);
+        $dadata = DaDataBank::id($search);
 
         if (Arr::has($dadata, "suggestions") && count(Arr::get($dadata, "suggestions")) > 0) {
             $data = Arr::get($dadata, "suggestions")[0];

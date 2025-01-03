@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('inn')->unique();
             $table->unsignedBigInteger('bik')->unique();
             $table->string('swift')->unique();
-            $table->unsignedBigInteger('correspondent_account')->unique();
+            $table->string('correspondent_account')->unique();
             $table->softDeletes();
             $table->timestamps();
         });

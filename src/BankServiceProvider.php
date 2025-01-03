@@ -18,7 +18,7 @@ class BankServiceProvider extends PackageServiceProvider
             ->hasMigrations([
                 'create_banks_table',
                 'create_payment_transactions_table',
-                'create_payments_table',
+                'create_payment_requisites_table',
             ])
             ->hasAssets()
             ->hasRoute('banks')
