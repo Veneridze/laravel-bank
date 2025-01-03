@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Farsh4d\Bank\Costants\PaymentStatus;
 
-class CreatePaymentTransactionsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -34,4 +34,4 @@ class CreatePaymentTransactionsTable extends Migration
     {
         Schema::dropIfExists('payment_transactions');
     }
-}
+};

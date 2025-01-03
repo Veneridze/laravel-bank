@@ -22,8 +22,7 @@ class Bank extends Model
     public static function resolve($search): Bank|null
     {
         //Поиск в существующей базе 
-        $bank = Bank::where("", $search)
-            ->orWhere("inn", $search)
+        $bank = Bank::where("inn", $search)
             ->orWhere("bik", $search)
             ->orWhere("swift", $search)
             ->orWhere("name", $search)

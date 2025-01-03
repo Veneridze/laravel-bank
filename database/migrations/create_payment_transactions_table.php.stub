@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Farsh4d\Bank\Costants\PaymentStatus;
 
-class CreatePaymentTransactionsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreatePaymentTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('psp', 32);
             $table->bigInteger('price');
-            $table->tinyInteger('status')->default(PaymentStatus::PENDING);
+            $table->tinyInteger('status')->default(0);
             $table->string('ref_id', 255)->nullable();
             $table->text('pay_res')->nullable();
             $table->softDeletes();
@@ -35,4 +35,4 @@ class CreatePaymentTransactionsTable extends Migration
     {
         Schema::dropIfExists('payment_transactions');
     }
-}
+};
