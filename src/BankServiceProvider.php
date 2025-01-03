@@ -15,7 +15,11 @@ class BankServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-bank')
-            ->hasMigrations()
+            ->hasMigrations([
+                'create_banks_table',
+                'create_payment_transactions_table',
+                'create_payments_table',
+            ])
             ->hasAssets()
             ->hasRoute('banks')
             ->hasConfigFile()
