@@ -44,13 +44,15 @@ class Bank extends Model
 
         if (Arr::has($dadata, "suggestions") && count(Arr::get($dadata, "suggestions")) > 0) {
             $data = Arr::get($dadata, "suggestions")[0];
-            return Bank::updateOrCreate([
-                "inn" => Arr::get($data, "data.inn"),
+            Bank::updateOrCreate([
+                "inn" => Arr::get($data, "data.inn")
+            ], [
                 "bik" => Arr::get($data, "data.bic"),
                 "swift" => Arr::get($data, "data.swift"),
                 "name" => Arr::get($data, "value"),
                 "correspondent_account" => Arr::get($data, "data.correspondent_account")
             ]);
+            return Bank::where('inn', Arr::get($data, "data.inn"))->firstOrFail();
         }
 
         return null;

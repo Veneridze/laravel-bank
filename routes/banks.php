@@ -9,5 +9,8 @@ Route::prefix('bank')->name('bank.')->group(function () {
         return Bank::where('inn', $bank)->getAvatar();
     })->name('avatar.show');
 
-    Route::get('/search/{query}', fn($query) => Bank::resolve($query))->name('search');
+    Route::get('/search/{query}', function ($query) {
+        $b = Bank::resolve($query);
+        return $b ?? response('', 404);
+    })->name('search');
 });
